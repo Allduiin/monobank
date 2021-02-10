@@ -27,6 +27,11 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
+    public void update(Request request) {
+        requestRepository.save(request);
+    }
+
+    @Override
     public List<Request> getAllWithProcessingStatus() {
         Request example = new Request();
         example.setStatus(Request.Status.PROCESSING);
