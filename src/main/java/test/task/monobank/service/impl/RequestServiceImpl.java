@@ -15,6 +15,7 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public Long add(Request request) {
+        request.setStatus(Request.STATUS.PROCESSING);
         return requestRepository.save(request).getId();
     }
 
