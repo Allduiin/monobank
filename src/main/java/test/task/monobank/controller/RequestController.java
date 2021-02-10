@@ -1,9 +1,11 @@
 package test.task.monobank.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import test.task.monobank.mapper.RequestMapper;
 import test.task.monobank.model.RequestRequestDto;
@@ -19,5 +21,10 @@ public class RequestController {
     @PostMapping("/add")
     public void add(@RequestBody RequestRequestDto requestRequestDto) {
         requestService.add(requestMapper.getRequestFromRequestDto(requestRequestDto));
+    }
+
+    @GetMapping("/get-status")
+    public String getStatus(@RequestParam Long id) {
+        return requestService.getStatus(id).toString();
     }
 }
