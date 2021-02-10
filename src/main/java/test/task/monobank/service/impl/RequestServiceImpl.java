@@ -15,12 +15,12 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public Long add(Request request) {
-        request.setStatus(Request.STATUS.PROCESSING);
+        request.setStatus(Request.Status.PROCESSING);
         return requestRepository.save(request).getId();
     }
 
     @Override
-    public Request.STATUS status(Long requestId) {
+    public Request.Status status(Long requestId) {
         return null;
     }
 }
