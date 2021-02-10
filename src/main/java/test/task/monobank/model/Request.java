@@ -18,9 +18,9 @@ public class Request {
     private Long routeNumber;
     private LocalDateTime requestDateTime;
     @Enumerated(EnumType.STRING)
-    private STATUS status;
+    private Status status;
 
-    public enum STATUS {
+    public enum Status {
         PROCESSING, COMPLETE, ERROR
     }
 }
