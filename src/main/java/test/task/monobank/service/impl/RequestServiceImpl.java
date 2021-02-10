@@ -1,5 +1,7 @@
 package test.task.monobank.service.impl;
 
+import java.util.List;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import test.task.monobank.model.Request;
 import test.task.monobank.repository.RequestRepository;
@@ -20,7 +22,14 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public Request.Status status(Long requestId) {
-        return null;
+    public Request.Status getStatus(Long requestId) {
+        return requestRepository.getOne(requestId).getStatus();
+    }
+
+    @Override
+    public List<Request> getAllWithProcessingStatus() {
+        Request example = new Request();
+        example.setStatus(Request.Status.PROCESSING);
+        return requestRepository.findAll(Example.of(example));
     }
 }
