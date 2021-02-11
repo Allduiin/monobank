@@ -2,6 +2,8 @@ package test.task.monobank.model;
 
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,4 +17,10 @@ public class Request {
     private Long id;
     private Long routeNumber;
     private LocalDateTime requestDateTime;
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    public enum Status {
+        PROCESSING, COMPLETE, ERROR
+    }
 }
