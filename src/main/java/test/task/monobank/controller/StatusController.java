@@ -15,7 +15,7 @@ public class StatusController {
     private final ActualStatusTakeService actualStatusTakeService;
 
     @PostMapping("/update-statuses")
-    public void checkStatuses() {
+    public void getStatus() {
         Request.Status[] statuses = Request.Status.values();
         List<Request> requests = requestService.getAllWithProcessingStatus();
         for (Request r : requests) {
@@ -24,3 +24,4 @@ public class StatusController {
         }
     }
 }
+
