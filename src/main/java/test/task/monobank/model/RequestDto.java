@@ -3,6 +3,6 @@ package test.task.monobank.model;
 import lombok.Data;
 
 @Data
-public class RequestRequestDto {
+public class RequestDto {
     private Long routeNumber;
 }
