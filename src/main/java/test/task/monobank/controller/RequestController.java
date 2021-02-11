@@ -1,6 +1,10 @@
 package test.task.monobank.controller;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import lombok.AllArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,5 +30,15 @@ public class RequestController {
     @GetMapping("/get-status")
     public String getStatus(@RequestParam Long id) {
         return requestService.getStatus(id).toString();
+    }
+
+    @Scheduled(fixedRate = 60000)
+    public void updateStatus() throws IOException {
+        URL url = new URL("http://localhost:8080/update-statuses");
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("POST");
+        con.connect();
+        con.getResponseCode();
+        con.disconnect();
     }
 }
