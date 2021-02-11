@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import test.task.monobank.mapper.RequestMapper;
-import test.task.monobank.model.RequestRequestDto;
+import test.task.monobank.model.RequestDto;
 import test.task.monobank.service.RequestService;
 
 @RestController
@@ -19,8 +19,8 @@ public class RequestController {
     private final RequestService requestService;
 
     @PostMapping("/add")
-    public void add(@RequestBody RequestRequestDto requestRequestDto) {
-        requestService.add(requestMapper.getRequestFromRequestDto(requestRequestDto));
+    public void add(@RequestBody RequestDto requestDto) {
+        requestService.add(requestMapper.getRequestFromRequestDto(requestDto));
     }
 
     @GetMapping("/get-status")
