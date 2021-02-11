@@ -1,6 +1,5 @@
 package test.task.monobank.controller;
 
-import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,11 +16,10 @@ public class StatusController {
     @PostMapping("/update-statuses")
     public void getStatus() {
         Request.Status[] statuses = Request.Status.values();
-        List<Request> requests = requestService.getAllWithProcessingStatus();
-        for (Request r : requests) {
+        requestService.getAllWithProcessingStatus().forEach(r -> {
             r.setStatus(actualStatusTakeService.getActualStatus(statuses));
             requestService.update(r);
-        }
+        });
     }
 }
 
