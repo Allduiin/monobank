@@ -11,7 +11,8 @@ public class ActualStatusTakeServiceTest {
     @Test
     public void normalGetActualStatusTest() {
         for (int i = 0; i < Request.Status.values().length * 5; i++) {
-            actualStatusTakeService.getActualStatus(Request.Status.values());
+            assert actualStatusTakeService.getActualStatus(Request.Status.values()).getClass()
+                    == Request.Status.class;
         }
     }
 }
