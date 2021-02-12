@@ -26,6 +26,7 @@ public class RequestServiceTest {
         requestRepository = mock(RequestRepository.class);
         requestService = new RequestServiceImpl(requestRepository);
     }
+
     @Test
     public void normalAddTest() {
         Request testRequest = new Request();
@@ -33,9 +34,9 @@ public class RequestServiceTest {
         Request expected = new Request();
         when(requestRepository.save(testRequest)).thenReturn(expected);
         expected.setId(TEST_ID);
-        Assert.assertEquals("Incorrect return id at add method",requestService.add(testRequest), TEST_ID);
+        Assert.assertEquals("Incorrect return id at add method", requestService.add(testRequest), TEST_ID);
         expected.setId(TEST_ID2);
-        Assert.assertEquals(TEST_ID2 ,requestService.add(testRequest));
+        Assert.assertEquals(TEST_ID2, requestService.add(testRequest));
     }
 
     @Test(expected = NullPointerException.class)
