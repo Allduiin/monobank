@@ -8,7 +8,7 @@ public interface RequestService {
 
     Request.Status getStatus(Long requestId);
 
-    void update(Request request);
+    Request update(Request request);
 
     List<Request> getAllWithProcessingStatus();
 }
