@@ -14,7 +14,7 @@ public class StatusController {
     private final ActualStatusTakeService actualStatusTakeService;
 
     @PostMapping("/update-statuses")
-    public void getStatus() {
+    public void updateStatuses() {
         Request.Status[] statuses = Request.Status.values();
         requestService.getAllWithProcessingStatus().forEach(r -> {
             r.setStatus(actualStatusTakeService.getActualStatus(statuses));

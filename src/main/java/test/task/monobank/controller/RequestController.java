@@ -23,8 +23,8 @@ public class RequestController {
     private final RequestService requestService;
 
     @PostMapping("/add")
-    public void add(@RequestBody RequestDto requestDto) {
-        requestService.add(requestMapper.getRequestFromRequestDto(requestDto));
+    public Long add(@RequestBody RequestDto requestDto) {
+        return requestService.add(requestMapper.getRequestFromRequestDto(requestDto));
     }
 
     @GetMapping("/get-status")
