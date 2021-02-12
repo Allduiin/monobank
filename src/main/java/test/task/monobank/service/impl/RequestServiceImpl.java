@@ -28,14 +28,14 @@ public class RequestServiceImpl implements RequestService {
         try {
             return requestRepository.getOne(requestId).getStatus();
         } catch (EntityNotFoundException e) {
-            throw new DataProcessingException("Can not find request with id:" + requestId, e);
+            throw new DataProcessingException("Can not find request with id " + requestId, e);
         }
     }
 
     @Override
     public Request update(Request request) {
         if (request.getId() != null && requestRepository.existsById(request.getId())) {
-            return  requestRepository.save(request);
+            return requestRepository.save(request);
         }
         throw new DataProcessingException("Request or it's id does not exists");
     }
