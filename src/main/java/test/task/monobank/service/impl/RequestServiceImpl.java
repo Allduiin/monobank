@@ -34,7 +34,10 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public Request update(Request request) {
-        return requestRepository.save(request);
+        if (request.getId() != null && requestRepository.existsById(request.getId())) {
+            return  requestRepository.save(request);
+        }
+        throw new DataProcessingException("Request or it's id does not exists");
     }
 
     @Override
